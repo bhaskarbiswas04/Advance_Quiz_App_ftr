@@ -5,16 +5,23 @@ import 'package:flutter/material.dart';
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
   @override
-  // ignore: library_private_types_in_public_api
-  _QuizState createState() => _QuizState();
+  State<Quiz> createState() {
+    return _QuizState();
+  }
 }
 
 class _QuizState extends State<Quiz> {
-  Widget activeScreen = const StartScreen();
+  String activeScreen = 'start-screen';
+
+  // @override
+  // void initState() {
+  //   activeScreen = StartScreen(startQuiz: switchScreen);
+  //   super.initState();
+  // }
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionScreen();
+      activeScreen = 'question-screen';
     });
   }
 
@@ -28,7 +35,9 @@ class _QuizState extends State<Quiz> {
             colors: [Colors.deepPurple, Colors.purple],
           ),
         ),
-        child: activeScreen,
+        child: activeScreen == 'start-screen'
+            ? StartScreen(startQuiz: switchScreen)
+            : const QuestionScreen(),
       ),
     );
   }
