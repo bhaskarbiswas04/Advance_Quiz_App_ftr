@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:advance_quiz_app/option_button.dart';
+import 'package:advance_quiz_app/datas/questions.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -12,6 +13,8 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
+  final currentQuestion = questions[0];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,28 +22,28 @@ class _QuestionScreenState extends State<QuestionScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'Question appears here.',
-            style: TextStyle(color: Colors.white, fontSize: 25),
+          Text(
+            currentQuestion.text,
+            style: const TextStyle(color: Colors.white, fontSize: 18),
           ),
           const SizedBox(height: 30),
           OptionButton(
-            option: 'Answer 1',
+            option: currentQuestion.answers[0],
             onTap: () {},
           ),
           const SizedBox(height: 10),
           OptionButton(
-            option: 'Answer 2',
+            option: currentQuestion.answers[1],
             onTap: () {},
           ),
           const SizedBox(height: 10),
           OptionButton(
-            option: 'Answer 3',
+            option: currentQuestion.answers[2],
             onTap: () {},
           ),
           const SizedBox(height: 10),
           OptionButton(
-            option: 'Answer 4',
+            option: currentQuestion.answers[3],
             onTap: () {},
           ),
         ],
