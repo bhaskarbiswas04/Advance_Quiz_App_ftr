@@ -27,6 +27,12 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(BuildContext constext) {
+    Widget screenWidget = StartScreen(startQuiz: switchScreen);
+
+    if (activeScreen == 'question-screen') {
+      screenWidget = const QuestionScreen();
+    }
+
     return Scaffold(
       backgroundColor: Colors.deepPurple,
       body: Container(
@@ -35,9 +41,10 @@ class _QuizState extends State<Quiz> {
             colors: [Colors.deepPurple, Colors.purple],
           ),
         ),
-        child: activeScreen == 'start-screen'
-            ? StartScreen(startQuiz: switchScreen)
-            : const QuestionScreen(),
+        child: screenWidget,
+        // child: activeScreen == 'start-screen'
+        //     ? StartScreen(startQuiz: switchScreen)
+        //     : const QuestionScreen(),
       ),
     );
   }
