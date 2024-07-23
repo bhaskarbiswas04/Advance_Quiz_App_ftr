@@ -6,7 +6,7 @@ class StartScreen extends StatelessWidget {
   const StartScreen({required this.startQuiz, super.key});
 
   final void Function() startQuiz;
-  //startQuiz stores the function from quiz.dart which is passed as a function
+  //startQuiz stores the function from quiz.dart which is passed as a function of state
 
   @override
   Widget build(BuildContext context) {
