@@ -13,26 +13,34 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  final currentQuestion = questions[1];
+  final currentQuestion = questions[0];
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            currentQuestion.text,
-            style: const TextStyle(color: Colors.white, fontSize: 18),
-          ),
-          const SizedBox(height: 30),
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              currentQuestion.text,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 30),
 
-          //...is a spread operator which is used to insert a list into a list.
-          ...currentQuestion.answers.map((answers) {
-            return OptionButton(option: answers, onTap: () {});
-          })
-        ],
+            //...is a spread operator which is used to insert a list into a list.
+            ...currentQuestion.answers.map((answers) {
+              return OptionButton(option: answers, onTap: () {});
+            })
+          ],
+        ),
       ),
     );
   }
