@@ -1,3 +1,4 @@
+//dart file to store all the questions for the app.
 import 'package:advance_quiz_app/models/quiz_questions.dart';
 
 const questions = [
