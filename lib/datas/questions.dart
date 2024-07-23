@@ -1,7 +1,7 @@
 //dart file to store all the questions for the app.
 import 'package:advance_quiz_app/models/quiz_questions.dart';
 
-const questions = [
+final questions = [
   QuizQuestion(
     text: 'What are the main building blocks of Flutter UIs?',
     answers: [

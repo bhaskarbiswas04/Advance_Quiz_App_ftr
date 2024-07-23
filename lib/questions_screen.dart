@@ -1,3 +1,5 @@
+// import 'package:advance_quiz_app/models/quiz_questions.dart';
+import 'package:advance_quiz_app/models/quiz_questions.dart';
 import 'package:flutter/material.dart';
 import 'package:advance_quiz_app/option_button.dart';
 import 'package:advance_quiz_app/datas/questions.dart';
@@ -13,10 +15,18 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  final currentQuestion = questions[0];
+  var currentQuestionIndex = 0;
+
+  // void changeQuestion() {
+  //   setState(() {
+  //     currentQuestionIndex++;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
+    QuizQuestion currentQuestion = questions[currentQuestionIndex];
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -36,8 +46,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
             const SizedBox(height: 30),
 
             //...is a spread operator which is used to insert a list into a list.
-            ...currentQuestion.answers.map((answers) {
-              return OptionButton(option: answers, onTap: () {});
+            ...currentQuestion.getShuffledAnswers().map((answers) {
+              return OptionButton(
+                  option: answers,
+                  onTap: () => setState(() {
+                        currentQuestionIndex++;
+                        currentQuestion = questions[currentQuestionIndex];
+                      }));
             })
           ],
         ),
