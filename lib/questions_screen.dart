@@ -1,5 +1,4 @@
 // import 'package:advance_quiz_app/models/quiz_questions.dart';
-import 'package:advance_quiz_app/models/quiz_questions.dart';
 import 'package:flutter/material.dart';
 import 'package:advance_quiz_app/option_button.dart';
 import 'package:advance_quiz_app/datas/questions.dart';
@@ -17,15 +16,18 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
 
-  // void changeQuestion() {
-  //   setState(() {
-  //     currentQuestionIndex++;
-  //   });
-  // }
+  void changeQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex >= questions.length) {
+        currentQuestionIndex = 0;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    QuizQuestion currentQuestion = questions[currentQuestionIndex];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -33,7 +35,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
         margin: const EdgeInsets.all(40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               currentQuestion.text,
@@ -46,14 +47,20 @@ class _QuestionScreenState extends State<QuestionScreen> {
             const SizedBox(height: 30),
 
             //...is a spread operator which is used to insert a list into a list.
-            ...currentQuestion.getShuffledAnswers().map((answers) {
-              return OptionButton(
-                  option: answers,
-                  onTap: () => setState(() {
-                        currentQuestionIndex++;
-                        currentQuestion = questions[currentQuestionIndex];
-                      }));
-            })
+            ...currentQuestion.getShuffledAnswers().map((answer) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  OptionButton(
+                    option: answer,
+                    onTap: changeQuestion,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  )
+                ],
+              );
+            }),
           ],
         ),
       ),

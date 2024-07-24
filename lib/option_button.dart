@@ -9,7 +9,7 @@ class OptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onTap,
       style: ElevatedButton.styleFrom(
           backgroundColor: const Color.fromARGB(255, 237, 103, 147),
           foregroundColor: Colors.white,
