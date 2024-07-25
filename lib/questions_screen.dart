@@ -1,11 +1,11 @@
-// import 'package:advance_quiz_app/models/quiz_questions.dart';
 import 'package:flutter/material.dart';
 import 'package:advance_quiz_app/option_button.dart';
 import 'package:advance_quiz_app/datas/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  const QuestionScreen({super.key, required this.onSelectAnswer});
+  final void Function(String answer) onSelectAnswer;
 
   @override
   // _QuestionScreenState createState() => _QuestionScreenState();
@@ -17,12 +17,10 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
 
-  void changeQuestion() {
+  void answerQuestion(String answer) {
+    widget.onSelectAnswer(answer);
     setState(() {
       currentQuestionIndex++;
-      if (currentQuestionIndex >= questions.length) {
-        currentQuestionIndex = 0;
-      }
     });
   }
 
@@ -55,7 +53,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 children: [
                   OptionButton(
                     option: answer,
-                    onTap: changeQuestion,
+                    onTap: () {
+                      answerQuestion(answer);
+                    },
                   ),
                   const SizedBox(
                     height: 8,
