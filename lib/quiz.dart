@@ -1,5 +1,5 @@
-import 'package:advance_quiz_app/questions_screen.dart';
-import 'package:advance_quiz_app/start_screen.dart';
+import 'package:advance_quiz_app/screens/questions_screen.dart';
+import 'package:advance_quiz_app/screens/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:advance_quiz_app/datas/questions.dart';
 
