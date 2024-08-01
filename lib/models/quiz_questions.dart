@@ -1,5 +1,4 @@
-//This dart file is the blue print for how the questions will be shown
-// in the UI.
+//This dart file is the blue print to store the questions for the UI.
 
 class QuizQuestion {
   QuizQuestion({required this.text, required this.answers});
