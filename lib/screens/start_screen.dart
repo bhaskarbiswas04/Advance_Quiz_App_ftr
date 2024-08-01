@@ -1,6 +1,7 @@
-// import 'package:advance_quiz_app/quiz.dart';
+//Flutter imports :
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
+
+//Package imports :
 import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {

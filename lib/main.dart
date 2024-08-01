@@ -1,6 +1,8 @@
-import 'package:advance_quiz_app/quiz.dart';
+//Flutter imports :
 import 'package:flutter/material.dart';
-// import 'package:advance_quiz_app/start_screen.dart';
+
+//Project imports :
+import 'package:advance_quiz_app/quiz.dart';
 
 void main() {
   runApp(const MyApp());
