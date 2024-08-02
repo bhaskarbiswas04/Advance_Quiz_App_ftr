@@ -1,4 +1,4 @@
-//dart file to store all the questions for the app.
+//dart file to store all the questions and answers for the app in a list.
 import 'package:advance_quiz_app/models/quiz_questions.dart';
 
 final questions = [
